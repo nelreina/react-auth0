@@ -7,10 +7,24 @@ body {
 
 nav {
   display: flex;
-  /* justify-content: space-around; */
-  /* widows: 100%; */
-  background: indigo;
 }
+
+.navbar {
+  background: indigo;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar > .buttons > button {
+  text-transform: uppercase;
+  border: none;
+  padding: 0.5em 1em;
+  background: #fff;
+}
+.navbar > .buttons {
+  padding: 1em;
+}
+
 nav a {
   text-decoration: none;
   padding: 1em;

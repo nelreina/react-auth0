@@ -1,15 +1,16 @@
-import React, {useContext} from 'react'
-import { AuthContext } from '../Auth/AuthProvider'
+import React from 'react'
+import useAuth from '../Auth/useAuth'
+import {Link} from 'react-router-dom';
 
 const Home = () => {
-  const context = useContext(AuthContext);
-  const login = () => {
-    context.auth0.login()
-  }
+  const {authenticated} = useAuth();
   return (
     <div>
       <h3>Home</h3>
-      <button onClick={login} >Login</button>
+      {
+        authenticated ? <Link to="/profile" >View Profile</Link> :
+        <p>Please login to access your data</p>
+      }
     </div>
   )
 }

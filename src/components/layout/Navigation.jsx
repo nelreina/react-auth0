@@ -1,12 +1,22 @@
 import React from 'react'
+
 import { Link } from "react-router-dom";
+import useAuth from '../../Auth/useAuth';
 
 const Navigation = () => {
+  const {authenticated, login, logout} = useAuth();
+  
   return (
-    <nav>
-      <Link to="/"  >Home</Link>
-      <Link to="/profile"  >Profile</Link>
-    </nav>
+    <div className="navbar">
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/profile">Profile</Link>
+      </nav>
+      <span className="buttons" >
+        {!authenticated && <button onClick={login}>login</button>}
+        {authenticated && <button onClick={logout}>logout</button>}
+      </span>
+    </div>
   )
 }
 
