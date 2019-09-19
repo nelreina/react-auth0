@@ -10,7 +10,9 @@ const Navigation = () => {
     <div className="navbar">
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/public">Public</Link>
+        {authenticated && <Link to="/private">Private</Link>}
+        {authenticated && <Link to="/profile">Profile</Link>}
       </nav>
       <span className="buttons" >
         {!authenticated && <button onClick={login}>login</button>}

@@ -19,7 +19,7 @@ const useAuth = () => {
       }
     };
     initAuth();
-  }, [context]);
+  }, [context, context.auth0]);
   return { authenticated, login, logout, profile };
 };
 
