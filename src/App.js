@@ -3,9 +3,11 @@ import { Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Public from "./pages/Public";
 import Callback from "./pages/Callback";
 import Navigation from "./components/layout/Navigation";
 import AuthProvider from "./Auth/AuthProvider";
+import Private from "./pages/Private";
 
 const App = ({ history }) => {
   return (
@@ -15,6 +17,8 @@ const App = ({ history }) => {
         <main>
           <Route path="/" exact component={Home} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/public" exact component={Public} />
+          <Route path="/private" exact component={Private} />
           <Route path="/callback" exact component={Callback} />
         </main>
       </div>

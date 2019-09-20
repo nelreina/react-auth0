@@ -4,10 +4,12 @@ export default class Auth {
   constructor(history) {
     this.history = history;
     this.profile = null;
+    this.accessToken = null;
     this.auth0 = new auth0.WebAuth({
       domain: process.env.REACT_APP_AUTH0_DOMAIN,
       clientID: process.env.REACT_APP_AUTH0_CLIENTID,
       redirectUri: process.env.REACT_APP_AUTH0_CALLBACK,
+      audience: process.env.REACT_APP_AUTH0_AUDIENCE,
       responseType: "token id_token",
       scope: "openid profile email"
     });
@@ -42,6 +44,7 @@ export default class Auth {
   handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log(authResult);
         this.setSession(authResult);
         this.loadProfile(authResult.accessToken);
         this.history.push("/");
@@ -67,6 +70,7 @@ export default class Auth {
         _token = accessToken;
       }
       try {
+        this.accessToken = _token;
         profile = await this.getClientInfo(_token);
       } catch (error) {
         console.log("error :", error);
